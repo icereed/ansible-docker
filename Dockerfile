@@ -34,8 +34,10 @@ RUN echo "===> Adding Ansible's PPA..."  && \
     \
     \
     echo "===> Adding hosts for convenience..."  && \
-    echo 'localhost' > /etc/ansible/hosts
+    echo 'localhost' > /etc/ansible/hosts && \
+    mkdir -p /tmp/ansible
 
+ENV DEFAULT_LOCAL_TMP /tmp/ansible
 
 # default command: display Ansible version
 CMD [ "ansible-playbook", "--version" ]
